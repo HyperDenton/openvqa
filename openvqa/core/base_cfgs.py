@@ -207,7 +207,7 @@ class BaseCfgs(PATH):
 
 
     def proc(self):
-        assert self.RUN_MODE in ['train', 'val', 'test']
+        assert self.RUN_MODE in ['train', 'val', 'test', 'demo']
 
         # ------------ Devices setup
         os.environ['CUDA_VISIBLE_DEVICES'] = self.GPU
@@ -217,7 +217,8 @@ class BaseCfgs(PATH):
 
 
         # ------------ Path check
-        self.check_path(self.DATASET)
+        if self.RUN_MODE != 'demo':
+            self.check_path(self.DATASET)
 
 
         # ------------ Model setup (Deprecated)

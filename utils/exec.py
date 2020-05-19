@@ -7,6 +7,7 @@ import os, copy
 from openvqa.datasets.dataset_loader import DatasetLoader
 from utils.train_engine import train_engine
 from utils.test_engine import test_engine
+from utils.test_engine_demo import test_engine_demo
 
 class Execution:
     def __init__(self, __C):
@@ -37,6 +38,9 @@ class Execution:
 
         elif run_mode == 'test':
             test_engine(self.__C, self.dataset)
+        
+        elif run_mode == 'demo':
+            test_engine_demo(self.__C, self.dataset)
 
         else:
             exit(-1)

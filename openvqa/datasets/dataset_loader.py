@@ -10,7 +10,10 @@ class DatasetLoader:
         self.__C = __C
 
         self.dataset = __C.DATASET
-        dataset_moudle_path = 'openvqa.datasets.' + self.dataset +'.' + self.dataset + '_loader'
+        if __C.RUN_MODE != 'demo':
+            dataset_moudle_path = 'openvqa.datasets.' + self.dataset +'.' + self.dataset + '_loader'
+        else:
+            dataset_moudle_path = 'openvqa.datasets.' + self.dataset +'.' + self.dataset + '_loader_demo'
         self.dataset_moudle = import_module(dataset_moudle_path)
 
     def DataSet(self):
